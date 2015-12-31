@@ -1,0 +1,50 @@
+body {
+    background-color: #303030;
+}
+
+header {
+    text-align: center;
+    color: #fff;
+    font-family: arial, verdana;
+    letter-spacing: 2px;
+}
+
+section {
+    text-align: center;
+    color: #fff;
+    font-family: arial, verdana;
+}
+
+input {
+    margin: 5px;
+}
+
+#submit {
+    font-family: arial,verdana;
+    font-size: 15px;
+    border: solid #fff 2px;
+    background-color: #fff;
+    padding: 5px 25px 5px 25px;
+}
+
+#submit:hover {
+    background-color: transparent;
+    color: #fff;
+}
+
+#submit:active {
+    background-color: #00CCFF;
+}
+
+#tableHolder {
+    text-align: center;
+    padding-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td {
+    width: 100px;
+    height: 100px;
+    background-color: #00CCFF;
+}
