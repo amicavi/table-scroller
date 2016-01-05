@@ -4,7 +4,7 @@ function createTable() {
     var rows           = document.getElementById("setRows").value;
     var cols           = document.getElementById("setCols").value;
     var xNegativeLimit = (cols / 2) - cols;
-    var yPositiveLimit = rows / 2;
+    var yPositiveLimit = (rows / 2);
     var xAxisPosition;
     var yAxisPosition;
     var table;
@@ -16,8 +16,8 @@ function createTable() {
          table += "<tr>";
 
          for (var j = 0; j < cols; j++) {
-            xAxisPosition = xNegativeLimit + j;
-            yAxisPosition = yPositiveLimit - i;
+            xAxisPosition = Math.round(xNegativeLimit) + j;
+            yAxisPosition = Math.floor(yPositiveLimit) - i;
             table += "<td>" + xAxisPosition + "," + yAxisPosition + "</td>";
          };
          table +="</tr>";
