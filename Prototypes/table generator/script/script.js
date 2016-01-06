@@ -1,3 +1,7 @@
+/* with this function we can read the input values to create the table 
+depending on the number of cols and rows that the user required 
+Also,with the extreme number in the left and the top we start the counting iterator
+and we build the location coordinates */
 
 function createTable() {
 
@@ -19,6 +23,10 @@ function createTable() {
             xAxisPosition = Math.round(xNegativeLimit) + j;
             yAxisPosition = Math.floor(yPositiveLimit) - i;
             table += "<td>" + xAxisPosition + "," + yAxisPosition + "</td>";
+
+            /* if (xAxisPosition = 0 && yAxisPosition = 0) {
+                table += "<td class="centerCell">" + xAxisPosition + "," + yAxisPosition + "</td>";
+            }*/
          };
          table +="</tr>";
      }; 
@@ -27,6 +35,7 @@ function createTable() {
     table += "</tbody>";
 
     document.getElementById("tableHolder").innerHTML= table;
+    document.getElementById("tableCopy").innerHTML= table;
   
 }
 

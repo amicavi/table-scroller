@@ -41,10 +41,21 @@ input {
     padding-top: 30px;
     margin-left: auto;
     margin-right: auto;
+    display: inline;
 }
 
-td {
+#tableHolder td {
     width: 100px;
     height: 100px;
     background-color: #00CCFF;
+}
+
+#tableCopy {
+    display: inline;
+}
+
+#tableCopy td {
+    width: 100px;
+    height: 100px;
+    background-color: #FF6666;
 }
