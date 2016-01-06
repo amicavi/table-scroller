@@ -13,7 +13,7 @@ function createTable() {
     var yAxisPosition;
     var table;
 
-    table = "<table>";
+    table = "<table id='myTable'>";
     table += "<tbody>";
 
     for (var i = 0; i < rows; i++) {
@@ -23,10 +23,6 @@ function createTable() {
             xAxisPosition = Math.round(xNegativeLimit) + j;
             yAxisPosition = Math.floor(yPositiveLimit) - i;
             table += "<td>" + xAxisPosition + "," + yAxisPosition + "</td>";
-
-            /* if (xAxisPosition = 0 && yAxisPosition = 0) {
-                table += "<td class="centerCell">" + xAxisPosition + "," + yAxisPosition + "</td>";
-            }*/
          };
          table +="</tr>";
      }; 
@@ -37,5 +33,37 @@ function createTable() {
     document.getElementById("tableHolder").innerHTML= table;
     document.getElementById("tableCopy").innerHTML= table;
   
+}
+
+function addRow() {
+    var getTable = document.getElementById("myTable");
+    var row      = getTable.insertRow(0);
+
+    var allRows  = document.getElementsByTagName("tr");
+    var firstRow = allRows[1].getElementsByTagName("td").length;
+
+    for (var r = 0; r < firstRow; r++) {
+        row.insertCell(r);
+    };
+
+
+
+    // var newCell = row.insertCell(r);
+    // newCell.innerHTML = "coordenate"
+
+    // var cell2 = row.insertCell(1);
+    // var cell3 = row.insertCell(2);
+    // cell1.innerHTML = "NEW CELL1";
+    // cell2.innerHTML = "NEW CELL2";
+    // cell3.innerHTML = "NEW CELL3";
+}
+
+function addCol(){
+    var getTable = document.getElementById("myTable");
+    var tableRows  = getTable.getElementsByTagName("tr");
+
+    for (var c = 0; c < tableRows.length; c++) {
+        tableRows[c].insertCell();
+    };
 }
 
