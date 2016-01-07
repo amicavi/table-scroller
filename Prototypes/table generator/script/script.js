@@ -36,42 +36,36 @@ function createTable() {
 }
 
 function addRow() {
-    var getTable   = document.getElementById("myTable");
-    var newRow     = getTable.insertRow(0);
+    var getTable = document.getElementById("myTable");
+    var newRow   = getTable.insertRow(0);
 
-    var getRow     = getTable.getElementsByTagName("tr");
-    var firstRow   = getRow[1].getElementsByTagName("td");
-
-    
-
+    var getRow   = getTable.getElementsByTagName("tr");
+    var firstRow = getRow[1].getElementsByTagName("td");
 
     for (var r = 0; r < firstRow.length; r++) {
-        var addCell = newRow.insertCell(r);
+        var addCells    = newRow.insertCell(r);
         var splitValue = firstRow[r].innerHTML.split(",")
         var xNewRow    = parseInt(splitValue[0]);
         var yNewRow    = parseInt(splitValue[1]) + 1;
 
-        addCell.innerHTML = xNewRow + "," + yNewRow;
+        addCells.innerHTML = xNewRow + "," + yNewRow;
     };
-
-
-
-    // var addCell = newRow.insertCell(r);
-    // addCell.innerHTML = "coordenate"
-
-    // var cell2 = newRow.insertCell(1);
-    // var cell3 = newRow.insertCell(2);
-    // cell1.innerHTML = "NEW CELL1";
-    // cell2.innerHTML = "NEW CELL2";
-    // cell3.innerHTML = "NEW CELL3";
 }
 
 function addCol(){
-    var getTable = document.getElementById("myTable");
-    var getRow  = getTable.getElementsByTagName("tr");
+    var getTable   = document.getElementById("myTable");
+    var getRow     = getTable.getElementsByTagName("tr");
+    var cellLength = getRow[0].getElementsByTagName("td").length;
 
     for (var c = 0; c < getRow.length; c++) {
-        getRow[c].insertCell();
+        var addCell    = getRow[c].insertCell();
+        var lastCell   = getRow[c].getElementsByTagName("td");
+        var splitValue = lastCell[cellLength].innerHTML.split(",")
+        var xNewCol    = parseInt(splitValue[0]) + 1;
+        var yNewCol    = parseInt(splitValue[1]);
+
+        addCell.innerHTML = xNewCol + "," + yNewCol;
+
     };
 }
 
