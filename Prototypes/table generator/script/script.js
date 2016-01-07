@@ -60,7 +60,7 @@ function addCol(){
     for (var c = 0; c < getRow.length; c++) {
         var addCell    = getRow[c].insertCell();
         var lastCell   = getRow[c].getElementsByTagName("td");
-        var splitValue = lastCell[cellLength].innerHTML.split(",")
+        var splitValue = lastCell[cellLength - 1].innerHTML.split(",")
         var xNewCol    = parseInt(splitValue[0]) + 1;
         var yNewCol    = parseInt(splitValue[1]);
 
