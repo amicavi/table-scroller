@@ -36,23 +36,31 @@ function createTable() {
 }
 
 function addRow() {
-    var getTable = document.getElementById("myTable");
-    var row      = getTable.insertRow(0);
+    var getTable   = document.getElementById("myTable");
+    var newRow     = getTable.insertRow(0);
 
-    var allRows  = document.getElementsByTagName("tr");
-    var firstRow = allRows[1].getElementsByTagName("td").length;
+    var getRow     = getTable.getElementsByTagName("tr");
+    var firstRow   = getRow[1].getElementsByTagName("td");
 
-    for (var r = 0; r < firstRow; r++) {
-        row.insertCell(r);
+    
+
+
+    for (var r = 0; r < firstRow.length; r++) {
+        var addCell = newRow.insertCell(r);
+        var splitValue = firstRow[r].innerHTML.split(",")
+        var xNewRow    = parseInt(splitValue[0]);
+        var yNewRow    = parseInt(splitValue[1]) + 1;
+
+        addCell.innerHTML = xNewRow + "," + yNewRow;
     };
 
 
 
-    // var newCell = row.insertCell(r);
-    // newCell.innerHTML = "coordenate"
+    // var addCell = newRow.insertCell(r);
+    // addCell.innerHTML = "coordenate"
 
-    // var cell2 = row.insertCell(1);
-    // var cell3 = row.insertCell(2);
+    // var cell2 = newRow.insertCell(1);
+    // var cell3 = newRow.insertCell(2);
     // cell1.innerHTML = "NEW CELL1";
     // cell2.innerHTML = "NEW CELL2";
     // cell3.innerHTML = "NEW CELL3";
@@ -60,10 +68,10 @@ function addRow() {
 
 function addCol(){
     var getTable = document.getElementById("myTable");
-    var tableRows  = getTable.getElementsByTagName("tr");
+    var getRow  = getTable.getElementsByTagName("tr");
 
-    for (var c = 0; c < tableRows.length; c++) {
-        tableRows[c].insertCell();
+    for (var c = 0; c < getRow.length; c++) {
+        getRow[c].insertCell();
     };
 }
 
