@@ -74,9 +74,8 @@ function addBottomRow() {
     var newRow    = getTable.insertRow(-1);
 
     var getRow    = getTable.getElementsByTagName("tr");
-    var rowLength = getRow.length - 1; //2
-    // var lastRow   = getRow[rowLength].getElementsByTagName("td");
-    var lastRow   = getRow[2].getElementsByTagName("td");
+    var rowLength = getRow.length - 2; //Because I first create the row I need to back 2 index positions.
+    var lastRow   = getRow[rowLength].getElementsByTagName("td");
 
     for (var r = 0; r < lastRow.length; r++) {
         var addCells    = newRow.insertCell(r);
