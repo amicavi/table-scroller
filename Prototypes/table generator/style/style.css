@@ -36,25 +36,34 @@ input {
     background-color: #00CCFF;
 }
 
+#tablesContainer {
+    width: 100%;
+}
+
 #tableHolder {
-    text-align: center;
-    padding-top: 30px;
-    margin-left: auto;
-    margin-right: auto;
+    position: absolute;
+}
+
+table {
+    max-width: 0;
+    width: 100%;
+    table-layout: fixed;
 }
 
 #tableHolder td {
-    width: 100px;
-    height: 100px;
+    width: 300px;
+    height: 225px;
     background-color: #00CCFF;
 }
 
 #tableCopy {
-    display: inline;
+    position: relative;
+    display: block;
+
 }
 
 #tableCopy td {
-    width: 100px;
-    height: 100px;
+    width: 300px;
+    height: 225px;
     background-color: #FF6666;
 }
