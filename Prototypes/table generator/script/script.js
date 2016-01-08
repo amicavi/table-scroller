@@ -35,7 +35,7 @@ function createTable() {
   
 }
 
-function addRow() {
+function addTopRow() {
     var getTable = document.getElementById("myTable");
     var newRow   = getTable.insertRow(0);
 
@@ -52,13 +52,13 @@ function addRow() {
     };
 }
 
-function addCol(){
+function addRightCol(){
     var getTable   = document.getElementById("myTable");
     var getRow     = getTable.getElementsByTagName("tr");
     var cellLength = getRow[0].getElementsByTagName("td").length;
 
     for (var c = 0; c < getRow.length; c++) {
-        var addCell    = getRow[c].insertCell();
+        var addCell    = getRow[c].insertCell(-1);
         var lastCell   = getRow[c].getElementsByTagName("td");
         var splitValue = lastCell[cellLength - 1].innerHTML.split(",")
         var xNewCol    = parseInt(splitValue[0]) + 1;
@@ -69,3 +69,37 @@ function addCol(){
     };
 }
 
+function addBottomRow() {
+    var getTable  = document.getElementById("myTable");
+    var newRow    = getTable.insertRow(-1);
+
+    var getRow    = getTable.getElementsByTagName("tr");
+    var rowLength = getRow.length - 1; //2
+    // var lastRow   = getRow[rowLength].getElementsByTagName("td");
+    var lastRow   = getRow[2].getElementsByTagName("td");
+
+    for (var r = 0; r < lastRow.length; r++) {
+        var addCells    = newRow.insertCell(r);
+        var splitValue = lastRow[r].innerHTML.split(",")
+        var xNewRow    = parseInt(splitValue[0]);
+        var yNewRow    = parseInt(splitValue[1]) - 1;
+
+        addCells.innerHTML = xNewRow + "," + yNewRow;
+    };
+}
+
+function addLeftCol(){
+    var getTable = document.getElementById("myTable");
+    var getRow   = getTable.getElementsByTagName("tr");
+
+    for (var c = 0; c < getRow.length; c++) {
+        var addCell    = getRow[c].insertCell(0);
+        var firstCell  = getRow[c].getElementsByTagName("td");
+        var splitValue = firstCell[1].innerHTML.split(",")
+        var xNewCol    = parseInt(splitValue[0]) - 1;
+        var yNewCol    = parseInt(splitValue[1]);
+
+        addCell.innerHTML = xNewCol + "," + yNewCol;
+
+    };
+}
