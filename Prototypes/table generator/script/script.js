@@ -31,8 +31,28 @@ function createTable() {
     table += "</tbody>";
 
     document.getElementById("tableHolder").innerHTML= table;
-    document.getElementById("tableCopy").innerHTML= table;
-  
+    document.getElementById("tableCopy").innerHTML= table; 
+
+    // In this part we call have a function to change the values of the second table for buttons
+    // with this we can control the main table giving actions to the button.
+
+    function addButtons(){
+        var secondDiv = document.getElementById("tableCopy");
+        var copyTable = secondDiv.getElementsByTagName("table");
+        var copyRow   = copyTable[0].getElementsByTagName('tr');
+
+        for (var p = 0; p < copyRow.length; p++) {
+            var eachRow = copyRow[p].getElementsByTagName('td');
+
+            for (var n = 0; n < eachRow.length; n++) {
+                var eachCell = eachRow[n];
+
+                eachCell.innerHTML = '<button>Works</button>';
+            };
+        };
+    }
+
+    addButtons();
 }
 
 function addTopRow() {
@@ -102,3 +122,26 @@ function addLeftCol(){
 
     };
 }
+
+// In this part we call an event listener to change the values of the second table for buttons
+// with this we can control the main table.
+
+// THIS DO NOT WORK BECAUSE THE TABLE ISN'T LOADED WHEN THE DOCUMENT STARTS
+// WE CAN ADD THIS FUNCTION INNER AND IN BOTTOM THE FUNCTION: createTable()
+
+
+ // document.addEventListener('DOMContentLoaded', function(){
+ //    var secondDiv = document.getElementById("tableCopy");
+ //    var copyTable = secondDiv.getElementsByTagName("table");
+ //    var copyRow   = copyTable[0].getElementsByTagName('tr');
+
+ //        for (var p = 0; p < copyRow.length; p++) {
+ //            var eachRow = copyRow[p].getElementsByTagName('td');
+
+ //            for (var n = 0; n < eachRow.length; n++) {
+ //                var eachCell = eachRow[n];
+
+ //                eachCell.innerHTML = '<button>Works</button>';
+ //            };
+ //        };
+ //    }

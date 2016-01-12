@@ -40,6 +40,13 @@ input {
     width: 100%;
 }
 
+#frameTable {
+    height: 686px;
+    position: absolute;
+    overflow: hidden;
+    width: 1218px;
+}
+
 #tableHolder {
     position: absolute;
 }
@@ -57,13 +64,21 @@ table {
 }
 
 #tableCopy {
-    position: relative;
+    position: absolute;
     display: block;
-
+    z-index: 1;
 }
 
 #tableCopy td {
     width: 300px;
     height: 225px;
-    background-color: #FF6666;
+    background-color: transparent;
+    color: transparent;
+}
+
+#tableCopy button {
+    background-color: transparent;
+    height: 224px;
+    width: 300px;
+    border: none;
 }
