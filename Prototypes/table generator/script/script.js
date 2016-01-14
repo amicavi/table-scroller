@@ -72,28 +72,42 @@ function createTable() {
 
     // The follow functions make works the buttons in the table top to add more top-rows
 
-    function buttonsControl(){
+    function topButton(){
 
-        var topHalf  = Math.floor(rows / 2);
-        var leftHalf = Math.floor(cols / 2);
-        console.log(topHalf);
-        console.log(leftHalf);
+        var topHalf   = Math.floor(rows / 2);
+
         var secondDiv = document.getElementById("tableCopy");
         var copyTable = secondDiv.getElementsByTagName("table");
         var copyRow   = copyTable[0].getElementsByTagName('tr');
-        console.log(copyCell);
 
-        for (var b = 0; b < topHalf; b++) {
-            console.log(b);
-            var copyCell  = copyRow[b].getElementsByTagName("td");
+        for (var tb = 0; tb < topHalf; tb++) {
+            var copyCell  = copyRow[tb].getElementsByTagName("td");
 
-            for (var bi = 0; bi < copyCell.length; bi++) {
-                copyCell[bi].getElementsByTagName('button')[0].addEventListener("click", addTopRow);
+            for (var tbi = 0; tbi < copyCell.length; tbi++) {
+                copyCell[tbi].getElementsByTagName('button')[0].addEventListener("click", addTopRow);
             };
         };
     }
 
-    buttonsControl()
+    topButton();
+
+    function leftButton(){
+        var leftHalf  = Math.floor(cols / 2);
+
+        var secondDiv = document.getElementById("tableCopy");
+        var copyTable = secondDiv.getElementsByTagName("table");
+        var copyRow   = copyTable[0].getElementsByTagName('tr');
+
+        for (var lb = 0; lb < rows; lb++) {
+            var allRows = copyRow[lb].getElementsByTagName('td');
+
+            for (var lbi = 0; lbi < leftHalf; lbi++) {
+                allRows[lbi].getElementsByTagName('button')[0].addEventListener("click", addLeftCol);
+            };
+        };
+    }
+
+    leftButton();
 }
 
 // The next functions add rows and cells top-bottom and right-left.
