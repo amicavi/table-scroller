@@ -52,8 +52,46 @@ function createTable() {
         };
     }
 
+    // The follow function allow to see the main table that is behind the copy,
+    // this give to the div container the same measures as the copy table for
+    // hide the overfow in the main table
+
+    function adjustMeasures(){
+        var secondDiv = document.getElementById("tableCopy");
+        var copyTable = secondDiv.getElementsByTagName("table");
+
+        var getHeight = copyTable[0].offsetHeight;
+        var getWidth  = copyTable[0].offsetWidth;
+
+        document.getElementById('frameTable').style.height = getHeight + 'px';
+        document.getElementById('frameTable').style.width = getWidth + 'px';
+    }
+
     addButtons();
+    adjustMeasures()
+
+    function buttonsControl(){
+
+        var topHalf  = Math.floor(cols / 2);
+        var leftHalf = Math.floor(rows / 2);
+        console.log(topHalf);
+        console.log(leftHalf);
+        var secondDiv = document.getElementById("tableCopy");
+        var copyTable = secondDiv.getElementsByTagName("table");
+        var copyRow   = copyTable[0].getElementsByTagName('tr');
+        var copyCell  = copyRow[0].getElementsByTagName("td");
+        console.log(copyCell);
+
+        for (var b = 0; b < topHalf; b++) {
+            console.log(b);
+            copyCell[b].getElementsByTagName('button')[0].addEventListener("click", addTopRow);
+            
+        };
+    }
+    buttonsControl()
 }
+
+// The next functions add rows and cells top-bottom and right-left.
 
 function addTopRow() {
     var getTable = document.getElementById("myTable");
@@ -122,26 +160,3 @@ function addLeftCol(){
 
     };
 }
-
-// In this part we call an event listener to change the values of the second table for buttons
-// with this we can control the main table.
-
-// THIS DO NOT WORK BECAUSE THE TABLE ISN'T LOADED WHEN THE DOCUMENT STARTS
-// WE CAN ADD THIS FUNCTION INNER AND IN BOTTOM THE FUNCTION: createTable()
-
-
- // document.addEventListener('DOMContentLoaded', function(){
- //    var secondDiv = document.getElementById("tableCopy");
- //    var copyTable = secondDiv.getElementsByTagName("table");
- //    var copyRow   = copyTable[0].getElementsByTagName('tr');
-
- //        for (var p = 0; p < copyRow.length; p++) {
- //            var eachRow = copyRow[p].getElementsByTagName('td');
-
- //            for (var n = 0; n < eachRow.length; n++) {
- //                var eachCell = eachRow[n];
-
- //                eachCell.innerHTML = '<button>Works</button>';
- //            };
- //        };
- //    }

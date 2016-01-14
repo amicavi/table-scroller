@@ -41,10 +41,8 @@ input {
 }
 
 #frameTable {
-    height: 686px;
     position: absolute;
     overflow: hidden;
-    width: 1218px;
 }
 
 #tableHolder {
