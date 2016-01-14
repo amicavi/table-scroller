@@ -130,6 +130,26 @@ function createTable() {
     }
 
     bottomButtons();
+
+    // The follow function make works the buttons in the table right to add more righ-cols
+
+    function rightButtons(){
+        var rightHalf = Math.ceil(cols / 2);
+        // get table rows
+        var secondDiv = document.getElementById("tableCopy");
+        var copyTable = secondDiv.getElementsByTagName("table");
+        var copyRow   = copyTable[0].getElementsByTagName('tr');
+
+        for (var rb = 0; rb < copyRow.length; rb++) {
+            var specificCols = copyRow[rb].getElementsByTagName('td');
+
+            for (var rbi = rightHalf; rbi >= rightHalf && rbi < cols; rbi++) {
+                specificCols[rbi].getElementsByTagName('button')[0].addEventListener("click", addRightCol);
+            };
+        };
+    }
+
+    rightButtons();
 }
 
 // The next functions add rows and cells top-bottom and right-left.
