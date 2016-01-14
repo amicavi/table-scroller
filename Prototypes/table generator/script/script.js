@@ -70,12 +70,12 @@ function createTable() {
     addButtons();
     adjustMeasures()
 
-    // The follow functions make works the buttons in the table top to add more top-rows
+    // The follow function make works the buttons in the table top to add more top-rows
 
-    function topButton(){
+    function topButtons(){
 
         var topHalf   = Math.floor(rows / 2);
-
+        // get table rows
         var secondDiv = document.getElementById("tableCopy");
         var copyTable = secondDiv.getElementsByTagName("table");
         var copyRow   = copyTable[0].getElementsByTagName('tr');
@@ -89,11 +89,13 @@ function createTable() {
         };
     }
 
-    topButton();
+    topButtons();
 
-    function leftButton(){
+    // The follow function make works the buttons in the table left to add more left-cols
+
+    function leftButtons(){
         var leftHalf  = Math.floor(cols / 2);
-
+        // get table rows
         var secondDiv = document.getElementById("tableCopy");
         var copyTable = secondDiv.getElementsByTagName("table");
         var copyRow   = copyTable[0].getElementsByTagName('tr');
@@ -107,7 +109,27 @@ function createTable() {
         };
     }
 
-    leftButton();
+    leftButtons();
+
+    // The follow function make works the buttons in the table bottom to add more bottom-rows
+
+    function bottomButtons(){
+        var bottomHalf = Math.ceil(rows / 2);
+        // get table rows
+        var secondDiv  = document.getElementById("tableCopy");
+        var copyTable  = secondDiv.getElementsByTagName("table");
+        var copyRow    = copyTable[0].getElementsByTagName('tr');
+
+        for (var bb = bottomHalf; bb >= bottomHalf && bb < rows; bb++) {
+            var specificRows = copyRow[bb].getElementsByTagName('td');
+
+            for (var bbi =0; bbi < specificRows.length; bbi++) {
+                specificRows[bbi].getElementsByTagName('button')[0].addEventListener("click", addBottomRow);
+            };
+        };
+    }
+
+    bottomButtons();
 }
 
 // The next functions add rows and cells top-bottom and right-left.
