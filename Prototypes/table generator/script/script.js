@@ -70,24 +70,29 @@ function createTable() {
     addButtons();
     adjustMeasures()
 
+    // The follow functions make works the buttons in the table top to add more top-rows
+
     function buttonsControl(){
 
-        var topHalf  = Math.floor(cols / 2);
-        var leftHalf = Math.floor(rows / 2);
+        var topHalf  = Math.floor(rows / 2);
+        var leftHalf = Math.floor(cols / 2);
         console.log(topHalf);
         console.log(leftHalf);
         var secondDiv = document.getElementById("tableCopy");
         var copyTable = secondDiv.getElementsByTagName("table");
         var copyRow   = copyTable[0].getElementsByTagName('tr');
-        var copyCell  = copyRow[0].getElementsByTagName("td");
         console.log(copyCell);
 
         for (var b = 0; b < topHalf; b++) {
             console.log(b);
-            copyCell[b].getElementsByTagName('button')[0].addEventListener("click", addTopRow);
-            
+            var copyCell  = copyRow[b].getElementsByTagName("td");
+
+            for (var bi = 0; bi < copyCell.length; bi++) {
+                copyCell[bi].getElementsByTagName('button')[0].addEventListener("click", addTopRow);
+            };
         };
     }
+
     buttonsControl()
 }
 
