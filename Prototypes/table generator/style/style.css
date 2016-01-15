@@ -38,11 +38,14 @@ input {
 
 #tablesContainer {
     width: 100%;
+    text-align: center;
+    margin: 20px;
 }
 
 #frameTable {
     position: absolute;
     overflow: hidden;
+/*    display: inline-block;*/
 }
 
 #tableHolder {
@@ -63,7 +66,7 @@ table {
 
 #tableCopy {
     position: absolute;
-    display: block;
+    /*display: inline-block;*/
     z-index: 1;
 }
 

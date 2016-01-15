@@ -56,6 +56,20 @@ function createTable() {
     // this give to the div container the same measures as the copy table for
     // hide the overfow in the main table
 
+    // function $(selector){
+    //     var element = document.querySelectorAll(selector)[0];
+    //     return function(){
+    //         this.css = function css(styleConfig){
+    //             element.style.width = parseInt(styleConfig.width) + 'px';
+    //             element.style.height = parseInt(styleConfig.height) + 'px';
+    //         }
+
+    //         this.hide = function hide(){
+    //             element.style.display = 'none';
+    //         }
+    //     }
+    // }
+
     function adjustMeasures(){
         var secondDiv = document.getElementById("tableCopy");
         var copyTable = secondDiv.getElementsByTagName("table");
@@ -65,6 +79,16 @@ function createTable() {
 
         document.getElementById('frameTable').style.height = getHeight + 'px';
         document.getElementById('frameTable').style.width = getWidth + 'px';
+
+        // $('#frameTable').css({
+        //     height: getHeight,
+        //     width: getWidth
+        // }).hide()
+
+        // $('#tableCopy').css({
+        //     height: 100,
+        //     width: 50
+        // }).hide()
     }
 
     addButtons();
