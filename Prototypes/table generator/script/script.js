@@ -43,6 +43,15 @@ function createTable() {
         return copyRow;
     }
 
+    // This function is for get the first row of the main table
+
+    function getMainTable(){
+        var getTable  = document.getElementById("myTable");
+        var getRow    = getTable.getElementsByTagName("tr");
+        var firstRow  = getRow[0].getElementsByTagName("td");
+
+        return firstRow;
+    }
 
     // In this part we call have a function to change the values of the second table for buttons
     // with this we can control the main table giving actions to the button.
@@ -167,22 +176,20 @@ function createTable() {
 
     rightButtons();
 
-    function moveWidth (){
-        var getTable  = document.getElementById("myTable");
-        var getRow    = getTable.getElementsByTagName("tr");
-        var firstRow  = getRow[0].getElementsByTagName("td");
-        var cellWidth = firstRow[0].offsetWidth;
+    function getCellWidth (){
+        var cellWidth = getCopyTable()[0].getElementsByTagName('td')[0].offsetWidth;
+        return cellWidth;
     }
+    console.log(getCellWidth());
 
-    function moveHeigth (){
-        var getTable  = document.getElementById("myTable");
-        var getRow    = getTable.getElementsByTagName("tr");
-        var firstRow  = getRow[0].getElementsByTagName("td");
-        var cellWidth = firstRow[0].offsetHeight;
+    function getCellHeight (){
+        var cellHeight = getMainTable()[0].offsetHeight;
+        return cellHeight;
     }
+    console.log(getCellHeight());
 }
 
-// The next functions add rows and cells top-bottom and right-left.
+/////////////// The next functions add rows and cells top-bottom and right-left.
 
 function addTopRow() {
     var getTable = document.getElementById("myTable");
