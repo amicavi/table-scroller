@@ -130,8 +130,8 @@ function createTable() {
     function topButtons(){
 
         var topHalf      = Math.floor(rows / 2);
-        var mainTableBox = document.getElementById('frameTable')
-        var copyTableBox = document.getElementById('tableCopy')
+        var mainTableBox = document.getElementById('frameTable').offsetTop
+        var copyTableBox = document.getElementById('tableCopy').offsetTop
 
         if (mainTableBox == copyTableBox) {
 
@@ -143,10 +143,9 @@ function createTable() {
                 };
             };
         } else if (mainTableBox < copyTableBox){
-            mainTableBox.style.top = mainTableBox.offsetTop + getCellHeight() + 'px';
+            mainTableBox.style.top = mainTableBox + getCellHeight() + 'px';
 
         };
-
     }
 
     topButtons();
@@ -155,14 +154,23 @@ function createTable() {
 
     function leftButtons(){
         var leftHalf  = Math.floor(cols / 2);
+        var mainTableBox = document.getElementById('frameTable').offsetLeft
+        var copyTableBox = document.getElementById('tableCopy').offsetLeft
 
-        for (var lb = 0; lb < rows; lb++) {
-            var allRows = getCopyTable()[lb].getElementsByTagName('td');
+        if (mainTableBox == copyTableBox) {
 
-            for (var lbi = 0; lbi < leftHalf; lbi++) {
-                allRows[lbi].getElementsByTagName('button')[0].addEventListener("click", addLeftCol);
+            for (var lb = 0; lb < rows; lb++) {
+                var allRows = getCopyTable()[lb].getElementsByTagName('td');
+
+                for (var lbi = 0; lbi < leftHalf; lbi++) {
+                    allRows[lbi].getElementsByTagName('button')[0].addEventListener("click", addLeftCol);
+                };
             };
+        } else if (mainTableBox < copyTableBox){
+            mainTableBox.style.top = mainTableBox + getCellWidth() + 'px';
+
         };
+
     }
 
     leftButtons();
