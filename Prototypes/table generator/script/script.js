@@ -174,6 +174,20 @@ function createTable() {
     }
 
     rightButtons();
+
+    function moveWidth (){
+        var getTable  = document.getElementById("myTable");
+        var getRow    = getTable.getElementsByTagName("tr");
+        var firstRow  = getRow[0].getElementsByTagName("td");
+        var cellWidth = firstRow[0].offsetWidth;
+    }
+
+    function moveHeigth (){
+        var getTable  = document.getElementById("myTable");
+        var getRow    = getTable.getElementsByTagName("tr");
+        var firstRow  = getRow[0].getElementsByTagName("td");
+        var cellWidth = firstRow[0].offsetHeight;
+    }
 }
 
 // The next functions add rows and cells top-bottom and right-left.
