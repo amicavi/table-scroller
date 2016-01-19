@@ -53,6 +53,20 @@ function createTable() {
         return firstRow;
     }
 
+    // The follow functions are to get the measures for the first cell in the main table
+
+    function getCellWidth(){
+        var cellWidth = getMainTable()[0].offsetWidth;
+        return cellWidth;
+    }
+    console.log(getCellWidth());
+
+    function getCellHeight(){
+        var cellHeight = getMainTable()[0].offsetHeight;
+        return cellHeight;
+    }
+    console.log(getCellHeight());
+
     // In this part we call have a function to change the values of the second table for buttons
     // with this we can control the main table giving actions to the button.
 
@@ -115,15 +129,24 @@ function createTable() {
 
     function topButtons(){
 
-        var topHalf   = Math.floor(rows / 2);
+        var topHalf      = Math.floor(rows / 2);
+        var mainTableBox = document.getElementById('frameTable')
+        var copyTableBox = document.getElementById('tableCopy')
 
-        for (var tb = 0; tb < topHalf; tb++) {
-            var copyCell  = getCopyTable()[tb].getElementsByTagName("td");
+        if (mainTableBox == copyTableBox) {
 
-            for (var tbi = 0; tbi < copyCell.length; tbi++) {
-                copyCell[tbi].getElementsByTagName('button')[0].addEventListener("click", addTopRow);
+            for (var tb = 0; tb < topHalf; tb++) {
+                var copyCell  = getCopyTable()[tb].getElementsByTagName("td");
+
+                for (var tbi = 0; tbi < copyCell.length; tbi++) {
+                    copyCell[tbi].getElementsByTagName('button')[0].addEventListener("click", addTopRow);
+                };
             };
+        } else if (mainTableBox < copyTableBox){
+            mainTableBox.style.top = mainTableBox.offsetTop + getCellHeight() + 'px';
+
         };
+
     }
 
     topButtons();
@@ -176,17 +199,6 @@ function createTable() {
 
     rightButtons();
 
-    function getCellWidth (){
-        var cellWidth = getCopyTable()[0].getElementsByTagName('td')[0].offsetWidth;
-        return cellWidth;
-    }
-    console.log(getCellWidth());
-
-    function getCellHeight (){
-        var cellHeight = getMainTable()[0].offsetHeight;
-        return cellHeight;
-    }
-    console.log(getCellHeight());
 }
 
 /////////////// The next functions add rows and cells top-bottom and right-left.
