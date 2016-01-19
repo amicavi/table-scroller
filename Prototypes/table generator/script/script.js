@@ -33,16 +33,24 @@ function createTable() {
     document.getElementById("tableHolder").innerHTML= table;
     document.getElementById("tableCopy").innerHTML= table; 
 
-    // In this part we call have a function to change the values of the second table for buttons
-    // with this we can control the main table giving actions to the button.
+    // This function is for get the first row of the copy table
 
-    function addButtons(){
+    function getCopyTable(){
         var secondDiv = document.getElementById("tableCopy");
         var copyTable = secondDiv.getElementsByTagName("table");
         var copyRow   = copyTable[0].getElementsByTagName('tr');
 
-        for (var p = 0; p < copyRow.length; p++) {
-            var eachRow = copyRow[p].getElementsByTagName('td');
+        return copyRow;
+    }
+
+
+    // In this part we call have a function to change the values of the second table for buttons
+    // with this we can control the main table giving actions to the button.
+
+    function addButtons(){
+
+        for (var p = 0; p < getCopyTable().length; p++) {
+            var eachRow = getCopyTable()[p].getElementsByTagName('td');
 
             for (var n = 0; n < eachRow.length; n++) {
                 var eachCell = eachRow[n];
@@ -99,13 +107,9 @@ function createTable() {
     function topButtons(){
 
         var topHalf   = Math.floor(rows / 2);
-        // get table rows
-        var secondDiv = document.getElementById("tableCopy");
-        var copyTable = secondDiv.getElementsByTagName("table");
-        var copyRow   = copyTable[0].getElementsByTagName('tr');
 
         for (var tb = 0; tb < topHalf; tb++) {
-            var copyCell  = copyRow[tb].getElementsByTagName("td");
+            var copyCell  = getCopyTable()[tb].getElementsByTagName("td");
 
             for (var tbi = 0; tbi < copyCell.length; tbi++) {
                 copyCell[tbi].getElementsByTagName('button')[0].addEventListener("click", addTopRow);
@@ -119,13 +123,9 @@ function createTable() {
 
     function leftButtons(){
         var leftHalf  = Math.floor(cols / 2);
-        // get table rows
-        var secondDiv = document.getElementById("tableCopy");
-        var copyTable = secondDiv.getElementsByTagName("table");
-        var copyRow   = copyTable[0].getElementsByTagName('tr');
 
         for (var lb = 0; lb < rows; lb++) {
-            var allRows = copyRow[lb].getElementsByTagName('td');
+            var allRows = getCopyTable()[lb].getElementsByTagName('td');
 
             for (var lbi = 0; lbi < leftHalf; lbi++) {
                 allRows[lbi].getElementsByTagName('button')[0].addEventListener("click", addLeftCol);
@@ -139,13 +139,9 @@ function createTable() {
 
     function bottomButtons(){
         var bottomHalf = Math.ceil(rows / 2);
-        // get table rows
-        var secondDiv  = document.getElementById("tableCopy");
-        var copyTable  = secondDiv.getElementsByTagName("table");
-        var copyRow    = copyTable[0].getElementsByTagName('tr');
 
         for (var bb = bottomHalf; bb >= bottomHalf && bb < rows; bb++) {
-            var specificRows = copyRow[bb].getElementsByTagName('td');
+            var specificRows = getCopyTable()[bb].getElementsByTagName('td');
 
             for (var bbi =0; bbi < specificRows.length; bbi++) {
                 specificRows[bbi].getElementsByTagName('button')[0].addEventListener("click", addBottomRow);
@@ -159,13 +155,9 @@ function createTable() {
 
     function rightButtons(){
         var rightHalf = Math.ceil(cols / 2);
-        // get table rows
-        var secondDiv = document.getElementById("tableCopy");
-        var copyTable = secondDiv.getElementsByTagName("table");
-        var copyRow   = copyTable[0].getElementsByTagName('tr');
 
-        for (var rb = 0; rb < copyRow.length; rb++) {
-            var specificCols = copyRow[rb].getElementsByTagName('td');
+        for (var rb = 0; rb < getCopyTable().length; rb++) {
+            var specificCols = getCopyTable()[rb].getElementsByTagName('td');
 
             for (var rbi = rightHalf; rbi >= rightHalf && rbi < cols; rbi++) {
                 specificCols[rbi].getElementsByTagName('button')[0].addEventListener("click", addRightCol);
