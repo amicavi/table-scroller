@@ -33,36 +33,30 @@ function createTable() {
     document.getElementById("tableHolder").innerHTML= table;
     document.getElementById("tableCopy").innerHTML= table; 
 
-    // This function is for get the first row of the copy table
+    // Get main table
+    var getTable  = document.getElementById("myTable");
+    var getRow    = getTable.getElementsByTagName("tr");
+    var firstRow  = getRow[0].getElementsByTagName("td");
 
-    function getCopyTable(){
-        var secondDiv = document.getElementById("tableCopy");
-        var copyTable = secondDiv.getElementsByTagName("table");
-        var copyRow   = copyTable[0].getElementsByTagName('tr');
+    // Get copy table
+    var secondDiv = document.getElementById("tableCopy");
+    var copyTable = secondDiv.getElementsByTagName("table");
+    var copyRow   = copyTable[0].getElementsByTagName('tr')
 
-        return copyRow;
-    }
-
-    // This function is for get the first row of the main table
-
-    function getMainTable(){
-        var getTable  = document.getElementById("myTable");
-        var getRow    = getTable.getElementsByTagName("tr");
-        var firstRow  = getRow[0].getElementsByTagName("td");
-
-        return firstRow;
-    }
+    // Get Tables containers
+    var mainTableBox = document.getElementById('frameTable')
+    var copyTableBox = document.getElementById('tableCopy')
 
     // The follow functions are to get the measures for the first cell in the main table
 
     function getCellWidth(){
-        var cellWidth = getMainTable()[0].offsetWidth;
+        var cellWidth = firstRow[0].offsetWidth;
         return cellWidth;
     }
     console.log(getCellWidth());
 
     function getCellHeight(){
-        var cellHeight = getMainTable()[0].offsetHeight;
+        var cellHeight = firstRow[0].offsetHeight;
         return cellHeight;
     }
     console.log(getCellHeight());
@@ -72,8 +66,8 @@ function createTable() {
 
     function addButtons(){
 
-        for (var p = 0; p < getCopyTable().length; p++) {
-            var eachRow = getCopyTable()[p].getElementsByTagName('td');
+        for (var p = 0; p < copyRow.length; p++) {
+            var eachRow = copyRow[p].getElementsByTagName('td');
 
             for (var n = 0; n < eachRow.length; n++) {
                 var eachCell = eachRow[n];
@@ -128,22 +122,19 @@ function createTable() {
     // The follow function make works the buttons in the table top to add more top-rows
 
     function topButtons(){
+        var topHalf = Math.floor(rows / 2);
 
-        var topHalf      = Math.floor(rows / 2);
-        var mainTableBox = document.getElementById('frameTable').offsetTop
-        var copyTableBox = document.getElementById('tableCopy').offsetTop
-
-        if (mainTableBox == copyTableBox) {
+        if (mainTableBox.offsetTop == copyTableBox.offsetTop) {
 
             for (var tb = 0; tb < topHalf; tb++) {
-                var copyCell  = getCopyTable()[tb].getElementsByTagName("td");
+                var copyCell  = copyRow[tb].getElementsByTagName("td");
 
                 for (var tbi = 0; tbi < copyCell.length; tbi++) {
                     copyCell[tbi].getElementsByTagName('button')[0].addEventListener("click", addTopRow);
                 };
             };
-        } else if (mainTableBox < copyTableBox){
-            mainTableBox.style.top = mainTableBox + getCellHeight() + 'px';
+        } else if (mainTableBox.offsetTop < copyTableBox.offsetTop){
+            mainTableBox.style.top = mainTableBox.offsetTop + getCellHeight() + 'px';
 
         };
     }
@@ -154,20 +145,18 @@ function createTable() {
 
     function leftButtons(){
         var leftHalf  = Math.floor(cols / 2);
-        var mainTableBox = document.getElementById('frameTable').offsetLeft
-        var copyTableBox = document.getElementById('tableCopy').offsetLeft
 
-        if (mainTableBox == copyTableBox) {
+        if (mainTableBox.offsetLeft == copyTableBox.offsetLeft) {
 
             for (var lb = 0; lb < rows; lb++) {
-                var allRows = getCopyTable()[lb].getElementsByTagName('td');
+                var allRows = copyRow[lb].getElementsByTagName('td');
 
                 for (var lbi = 0; lbi < leftHalf; lbi++) {
                     allRows[lbi].getElementsByTagName('button')[0].addEventListener("click", addLeftCol);
                 };
             };
-        } else if (mainTableBox < copyTableBox){
-            mainTableBox.style.top = mainTableBox + getCellWidth() + 'px';
+        } else if (mainTableBox.offsetLeft < copyTableBox.offsetLeft){
+            mainTableBox.style.marginTop = getTable.offsetLeft + getCellWidth() + 'px';
 
         };
 
@@ -178,14 +167,25 @@ function createTable() {
     // The follow function make works the buttons in the table bottom to add more bottom-rows
 
     function bottomButtons(){
-        var bottomHalf = Math.ceil(rows / 2);
+        var bottomHalf      = Math.ceil(rows / 2);
+        var bottomTable     = getTable.offsetHeight + mainTableBox.offsetTop;
+        var bottomCopyTable = copyTable[0].offsetHeight + copyTableBox.offsetTop;
 
-        for (var bb = bottomHalf; bb >= bottomHalf && bb < rows; bb++) {
-            var specificRows = getCopyTable()[bb].getElementsByTagName('td');
+        if (bottomTable == bottomCopyTable) {
 
-            for (var bbi =0; bbi < specificRows.length; bbi++) {
-                specificRows[bbi].getElementsByTagName('button')[0].addEventListener("click", addBottomRow);
-            };
+            for (var bb = bottomHalf; bb >= bottomHalf && bb < rows; bb++) {
+                var specificRows = copyRow[bb].getElementsByTagName('td');
+
+                for (var bbi =0; bbi < specificRows.length; bbi++) {
+                    specificRows[bbi].getElementsByTagName('button')[0].addEventListener("click", addBottomRow);
+                    specificRows[bbi].getElementsByTagName('button')[0].addEventListener("click", function()
+                        {document.getElementById("myTable").style.marginTop = getTable.offsetTop - (getCellHeight() + 2) + 'px'});
+                };
+            };  
+        } else if (bottomTable > bottomCopyTable){
+            mainTableBox.style.top = mainTableBox.offsetTop - getCellHeight() + 'px';
+        } else {
+            mainTableBox.style.top = copyTableBox.offsetTop + "px";
         };
     }
 
@@ -196,8 +196,8 @@ function createTable() {
     function rightButtons(){
         var rightHalf = Math.ceil(cols / 2);
 
-        for (var rb = 0; rb < getCopyTable().length; rb++) {
-            var specificCols = getCopyTable()[rb].getElementsByTagName('td');
+        for (var rb = 0; rb < copyRow.length; rb++) {
+            var specificCols = copyRow[rb].getElementsByTagName('td');
 
             for (var rbi = rightHalf; rbi >= rightHalf && rbi < cols; rbi++) {
                 specificCols[rbi].getElementsByTagName('button')[0].addEventListener("click", addRightCol);
