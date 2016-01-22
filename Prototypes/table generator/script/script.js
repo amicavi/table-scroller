@@ -134,7 +134,7 @@ function createTable() {
                 };
             };
         } else if (mainTableBox.offsetTop < copyTableBox.offsetTop){
-            mainTableBox.style.top = mainTableBox.offsetTop + getCellHeight() + 'px';
+            mainTableBox.style.marginTop = mainTableBox.offsetTop + getCellHeight() + 'px';
 
         };
     }
@@ -156,7 +156,7 @@ function createTable() {
                 };
             };
         } else if (mainTableBox.offsetLeft < copyTableBox.offsetLeft){
-            mainTableBox.style.marginTop = getTable.offsetLeft + getCellWidth() + 'px';
+            mainTableBox.style.marginLeft = getTable.offsetTop + getCellWidth() + 'px';
 
         };
 
@@ -183,7 +183,7 @@ function createTable() {
                 };
             };  
         } else if (bottomTable > bottomCopyTable){
-            mainTableBox.style.top = mainTableBox.offsetTop - getCellHeight() + 'px';
+            mainTableBox.style.top = getTable.offsetTop - (getCellHeight() + 2) + 'px';
         } else {
             mainTableBox.style.top = copyTableBox.offsetTop + "px";
         };
@@ -194,15 +194,25 @@ function createTable() {
     // The follow function make works the buttons in the table right to add more righ-cols
 
     function rightButtons(){
-        var rightHalf = Math.ceil(cols / 2);
+        var rightHalf      = Math.ceil(cols / 2);
+        var rightTable     = getTable.offsetWidth + mainTableBox.offsetLeft;
+        var rightCopyTable = copyTable[0].offsetWidth + copyTableBox.offsetLeft;
 
-        for (var rb = 0; rb < copyRow.length; rb++) {
-            var specificCols = copyRow[rb].getElementsByTagName('td');
+        if (rightTable == rightCopyTable) {
+            
+            for (var rb = 0; rb < copyRow.length; rb++) {
+                var specificCols = copyRow[rb].getElementsByTagName('td');
 
-            for (var rbi = rightHalf; rbi >= rightHalf && rbi < cols; rbi++) {
-                specificCols[rbi].getElementsByTagName('button')[0].addEventListener("click", addRightCol);
+                for (var rbi = rightHalf; rbi >= rightHalf && rbi < cols; rbi++) {
+                    specificCols[rbi].getElementsByTagName('button')[0].addEventListener("click", addRightCol);
+                    specificCols[rbi].getElementsByTagName('button')[0].addEventListener("click", function()
+                        {document.getElementById("myTable").style.marginLeft = getTable.offsetLeft - (getCellWidth() + 2) + 'px'});
+                };
             };
+        } else if (rightTable > rightCopyTable){
+            document.getElementById("myTable").style.marginRight = getTable.offsetLeft - (getCellWidth() + 2) + 'px'
         };
+
     }
 
     rightButtons();
