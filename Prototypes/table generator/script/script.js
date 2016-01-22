@@ -53,13 +53,11 @@ function createTable() {
         var cellWidth = firstRow[0].offsetWidth;
         return cellWidth;
     }
-    console.log(getCellWidth());
 
     function getCellHeight(){
         var cellHeight = firstRow[0].offsetHeight;
         return cellHeight;
     }
-    console.log(getCellHeight());
 
     // In this part we call have a function to change the values of the second table for buttons
     // with this we can control the main table giving actions to the button.
@@ -124,18 +122,12 @@ function createTable() {
     function topButtons(){
         var topHalf = Math.floor(rows / 2);
 
-        if (mainTableBox.offsetTop == copyTableBox.offsetTop) {
+        for (var tb = 0; tb < topHalf; tb++) {
+            var copyCell  = copyRow[tb].getElementsByTagName("td");
 
-            for (var tb = 0; tb < topHalf; tb++) {
-                var copyCell  = copyRow[tb].getElementsByTagName("td");
-
-                for (var tbi = 0; tbi < copyCell.length; tbi++) {
-                    copyCell[tbi].getElementsByTagName('button')[0].addEventListener("click", addTopRow);
-                };
+            for (var tbi = 0; tbi < copyCell.length; tbi++) {
+                copyCell[tbi].getElementsByTagName('button')[0].addEventListener("click", topScroll);
             };
-        } else if (mainTableBox.offsetTop < copyTableBox.offsetTop){
-            mainTableBox.style.marginTop = mainTableBox.offsetTop + getCellHeight() + 'px';
-
         };
     }
 
@@ -217,6 +209,14 @@ function createTable() {
 
     rightButtons();
 
+}
+
+function topScroll(){
+    if (mainTableBox.offsetTop == copyTableBox.offsetTop) {
+        addTopRow();
+    } else if (mainTableBox.offsetTop < copyTableBox.offsetTop){
+        mainTableBox.style.marginTop = mainTableBox.offsetTop + getCellHeight() + 'px';
+    };
 }
 
 /////////////// The next functions add rows and cells top-bottom and right-left.
