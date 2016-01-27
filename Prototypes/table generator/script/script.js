@@ -138,20 +138,13 @@ function createTable() {
     function leftButtons(){
         var leftHalf  = Math.floor(cols / 2);
 
-        if (mainTableBox.offsetLeft == copyTableBox.offsetLeft) {
-
             for (var lb = 0; lb < rows; lb++) {
                 var allRows = copyRow[lb].getElementsByTagName('td');
 
                 for (var lbi = 0; lbi < leftHalf; lbi++) {
-                    allRows[lbi].getElementsByTagName('button')[0].addEventListener("click", addLeftCol);
+                    allRows[lbi].getElementsByTagName('button')[0].addEventListener("click", leftScroll);
                 };
             };
-        } else if (mainTableBox.offsetLeft < copyTableBox.offsetLeft){
-            mainTableBox.style.marginLeft = getTable.offsetTop + getCellWidth() + 'px';
-
-        };
-
     }
 
     leftButtons();
@@ -209,22 +202,37 @@ function createTable() {
 
     rightButtons();
 
-function topScroll(){
+    function topScroll(){
+        var topTable = getTable.offsetTop + copyTableBox.offsetTop
 
-    if ((getTable.offsetTop + copyTableBox.offsetTop) == copyTableBox.offsetTop) {
-        console.log(getTable.offsetTop);
-        console.log(copyTableBox.offsetTop);
-        addTopRow();
-    } else if ((getTable.offsetTop + copyTableBox.offsetTop) < copyTableBox.offsetTop){
-        console.log(getTable.offsetTop);
-        console.log(copyTableBox.offsetTop);
-        document.getElementById("myTable").style.marginTop = getTable.offsetTop + getCellHeight() + 'px'
-        console.log(getTable.offsetTop);
-        console.log(copyTableBox.offsetTop);
-    } else {
-        console.log("don't work");
-    };
-}
+        if (topTable == copyTableBox.offsetTop) {
+            console.log(topTable);
+            console.log(copyTableBox.offsetTop);
+            addTopRow();
+        } else if (topTable < copyTableBox.offsetTop){
+            console.log(topTable);
+            console.log(copyTableBox.offsetTop);
+            getTable.style.marginTop = getTable.offsetTop + getCellHeight() + 'px';
+        } else {
+            console.log("reset marginTop");
+            getTable.style.marginTop = 0 + "px";
+        };
+    }
+
+    function leftScroll(){
+        var leftTable = getTable.offsetLeft + copyTableBox.offsetLeft
+
+        if (leftTable == copyTableBox.offsetLeft) {
+            console.log(leftTable);
+            console.log(copyTableBox.offsetLeft);
+            addLeftCol();
+        } else if (leftTable < copyTableBox.offsetLeft){
+            console.log(leftTable);
+            console.log(copyTableBox.offsetLeft);
+            getTable.style.marginLeft = getTable.offsetLeft + getCellWidth() + 'px';
+        };
+
+    }
 
 }
 
