@@ -209,15 +209,24 @@ function createTable() {
 
     rightButtons();
 
-}
-
 function topScroll(){
-    if (mainTableBox.offsetTop == copyTableBox.offsetTop) {
+    var getTable     = document.getElementById("myTable");
+    var mainTableBox = document.getElementById('frameTable')
+    var copyTableBox = document.getElementById('tableCopy')
+
+    if (getTable.offsetTop == copyTableBox.offsetTop) {
+        console.log(mainTableBox.offsetTop);
+        console.log(copyTableBox.offsetTop);
         addTopRow();
-    } else if (mainTableBox.offsetTop < copyTableBox.offsetTop){
-        mainTableBox.style.marginTop = mainTableBox.offsetTop + getCellHeight() + 'px';
+    } else if (getTable.offsetTop < copyTableBox.offsetTop){
+        document.getElementById("myTable").style.marginTop = getTable.offsetTop + getCellHeight() + 'px'
+    } else {
+        console.log("don't work");
     };
 }
+
+}
+
 
 /////////////// The next functions add rows and cells top-bottom and right-left.
 
