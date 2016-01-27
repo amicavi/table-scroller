@@ -152,26 +152,16 @@ function createTable() {
     // The follow function make works the buttons in the table bottom to add more bottom-rows
 
     function bottomButtons(){
-        var bottomHalf      = Math.ceil(rows / 2);
-        var bottomTable     = getTable.offsetHeight + mainTableBox.offsetTop;
-        var bottomCopyTable = copyTable[0].offsetHeight + copyTableBox.offsetTop;
-
-        if (bottomTable == bottomCopyTable) {
-
+        var bottomHalf = Math.ceil(rows / 2);
+       
             for (var bb = bottomHalf; bb >= bottomHalf && bb < rows; bb++) {
                 var specificRows = copyRow[bb].getElementsByTagName('td');
 
                 for (var bbi =0; bbi < specificRows.length; bbi++) {
-                    specificRows[bbi].getElementsByTagName('button')[0].addEventListener("click", addBottomRow);
-                    specificRows[bbi].getElementsByTagName('button')[0].addEventListener("click", function()
-                        {document.getElementById("myTable").style.marginTop = getTable.offsetTop - (getCellHeight() + 2) + 'px'});
+                    specificRows[bbi].getElementsByTagName('button')[0].addEventListener("click", bottomScroll);
                 };
             };  
-        } else if (bottomTable > bottomCopyTable){
-            mainTableBox.style.top = getTable.offsetTop - (getCellHeight() + 2) + 'px';
-        } else {
-            mainTableBox.style.top = copyTableBox.offsetTop + "px";
-        };
+        
     }
 
     bottomButtons();
@@ -190,8 +180,9 @@ function createTable() {
 
                 for (var rbi = rightHalf; rbi >= rightHalf && rbi < cols; rbi++) {
                     specificCols[rbi].getElementsByTagName('button')[0].addEventListener("click", addRightCol);
-                    specificCols[rbi].getElementsByTagName('button')[0].addEventListener("click", function()
-                        {document.getElementById("myTable").style.marginLeft = getTable.offsetLeft - (getCellWidth() + 2) + 'px'});
+                    specificCols[rbi].getElementsByTagName('button')[0].addEventListener("click", function(){
+                        document.getElementById("myTable").style.marginRight = getTable.offsetLeft - (getCellWidth() + 2) + 'px'
+                    });
                 };
             };
         } else if (rightTable > rightCopyTable){
@@ -205,7 +196,7 @@ function createTable() {
     function topScroll(){
         var topTable = getTable.offsetTop + copyTableBox.offsetTop
 
-        if (topTable == copyTableBox.offsetTop) {
+        if (topTable == copyTableBox.offsetTop){
             console.log(topTable);
             console.log(copyTableBox.offsetTop);
             addTopRow();
@@ -222,7 +213,7 @@ function createTable() {
     function leftScroll(){
         var leftTable = getTable.offsetLeft + copyTableBox.offsetLeft
 
-        if (leftTable == copyTableBox.offsetLeft) {
+        if (leftTable == copyTableBox.offsetLeft){
             console.log(leftTable);
             console.log(copyTableBox.offsetLeft);
             addLeftCol();
@@ -232,6 +223,24 @@ function createTable() {
             getTable.style.marginLeft = getTable.offsetLeft + getCellWidth() + 'px';
         };
 
+    }
+
+    function bottomScroll(){
+        var bottomTable     = getTable.offsetHeight + mainTableBox.offsetTop;
+        var bottomCopyTable = copyTable[0].offsetHeight + copyTableBox.offsetTop;
+
+
+        if (bottomTable == bottomCopyTable){
+            console.log(bottomTable);
+            console.log(bottomCopyTable);
+            document.getElementById("myTable").style.marginTop = getTable.offsetTop - (getCellHeight() + 2) + 'px';
+        } else if (bottomTable > bottomCopyTable){
+            console.log(bottomTable);
+            console.log(bottomCopyTable);
+            getTable.style.marginTop = getTable.offsetTop - (getCellHeight() + 2) + 'px';
+        } else {
+            getTable.style.marginTop = copyTableBox.offsetTop + "px";
+        };
     }
 
 }
