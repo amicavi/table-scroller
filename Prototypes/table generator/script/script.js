@@ -210,16 +210,17 @@ function createTable() {
     rightButtons();
 
 function topScroll(){
-    var getTable     = document.getElementById("myTable");
-    var mainTableBox = document.getElementById('frameTable')
-    var copyTableBox = document.getElementById('tableCopy')
 
-    if (getTable.offsetTop == copyTableBox.offsetTop) {
-        console.log(mainTableBox.offsetTop);
+    if ((getTable.offsetTop + copyTableBox.offsetTop) == copyTableBox.offsetTop) {
+        console.log(getTable.offsetTop);
         console.log(copyTableBox.offsetTop);
         addTopRow();
-    } else if (getTable.offsetTop < copyTableBox.offsetTop){
+    } else if ((getTable.offsetTop + copyTableBox.offsetTop) < copyTableBox.offsetTop){
+        console.log(getTable.offsetTop);
+        console.log(copyTableBox.offsetTop);
         document.getElementById("myTable").style.marginTop = getTable.offsetTop + getCellHeight() + 'px'
+        console.log(getTable.offsetTop);
+        console.log(copyTableBox.offsetTop);
     } else {
         console.log("don't work");
     };
