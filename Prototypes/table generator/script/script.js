@@ -47,7 +47,7 @@ function createTable() {
     var mainTableBox = document.getElementById('frameTable')
     var copyTableBox = document.getElementById('tableCopy')
 
-    // The follow functions are to get the measures for the first cell in the main table
+    // The following functions are to get the measures for the first cell in the main table
 
     function getCellWidth(){
         var cellWidth = firstRow[0].offsetWidth;
@@ -75,7 +75,7 @@ function createTable() {
         };
     }
 
-    // The follow function allow to see the main table that is behind the copy,
+    // The following function allow to see the main table that is behind the copy,
     // this give to the div container the same measures as the copy table for
     // hide the overfow in the main table
 
@@ -117,7 +117,7 @@ function createTable() {
     addButtons();
     adjustMeasures()
 
-    // The follow function make works the buttons in the table top to add more top-rows
+    // The following function make works the buttons in the table top to add more top-rows
 
     function topButtons(){
         var topHalf = Math.floor(rows / 2);
@@ -133,7 +133,7 @@ function createTable() {
 
     topButtons();
 
-    // The follow function make works the buttons in the table left to add more left-cols
+    // The following function make works the buttons in the table left to add more left-cols
 
     function leftButtons(){
         var leftHalf  = Math.floor(cols / 2);
@@ -149,7 +149,7 @@ function createTable() {
 
     leftButtons();
 
-    // The follow function make works the buttons in the table bottom to add more bottom-rows
+    // The following function make works the buttons in the table bottom to add more bottom-rows
 
     function bottomButtons(){
         var bottomHalf = Math.ceil(rows / 2);
@@ -161,12 +161,11 @@ function createTable() {
                     specificRows[bbi].getElementsByTagName('button')[0].addEventListener("click", bottomScroll);
                 };
             };  
-        
     }
 
     bottomButtons();
 
-    // The follow function make works the buttons in the table right to add more righ-cols
+    // The following function make works the buttons in the table right to add more righ-cols
 
     function rightButtons(){
         var rightHalf      = Math.ceil(cols / 2);
@@ -193,16 +192,14 @@ function createTable() {
 
     rightButtons();
 
+    // The following functions works to select if the button needs to add one col/row or just move the table
+
     function topScroll(){
         var topTable = getTable.offsetTop + copyTableBox.offsetTop
 
         if (topTable == copyTableBox.offsetTop){
-            console.log(topTable);
-            console.log(copyTableBox.offsetTop);
             addTopRow();
         } else if (topTable < copyTableBox.offsetTop){
-            console.log(topTable);
-            console.log(copyTableBox.offsetTop);
             getTable.style.marginTop = getTable.offsetTop + getCellHeight() + 'px';
         } else {
             console.log("reset marginTop");
@@ -214,12 +211,8 @@ function createTable() {
         var leftTable = getTable.offsetLeft + copyTableBox.offsetLeft
 
         if (leftTable == copyTableBox.offsetLeft){
-            console.log(leftTable);
-            console.log(copyTableBox.offsetLeft);
             addLeftCol();
         } else if (leftTable < copyTableBox.offsetLeft){
-            console.log(leftTable);
-            console.log(copyTableBox.offsetLeft);
             getTable.style.marginLeft = getTable.offsetLeft + getCellWidth() + 'px';
         };
 
@@ -230,17 +223,18 @@ function createTable() {
         var bottomCopyTable = copyTable[0].offsetHeight + copyTableBox.offsetTop;
 
 
-        if (bottomTable == bottomCopyTable){
-            console.log(bottomTable);
-            console.log(bottomCopyTable);
-            document.getElementById("myTable").style.marginTop = getTable.offsetTop - (getCellHeight() + 2) + 'px';
-        } else if (bottomTable > bottomCopyTable){
-            console.log(bottomTable);
-            console.log(bottomCopyTable);
+        if ((bottomTable + getTable.offsetTop) == bottomCopyTable){
+            addBottomRow();
+            getTable.style.marginTop = getTable.offsetTop - (getCellHeight() + 2) + 'px';
+        } else if ((bottomTable + getTable.offsetTop) > bottomCopyTable){
             getTable.style.marginTop = getTable.offsetTop - (getCellHeight() + 2) + 'px';
         } else {
-            getTable.style.marginTop = copyTableBox.offsetTop + "px";
+            getTable.style.marginTop = 0 + "px";
         };
+    }
+
+    function rightScroll(){
+
     }
 
 }
