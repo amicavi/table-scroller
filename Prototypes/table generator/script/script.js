@@ -168,26 +168,15 @@ function createTable() {
     // The following function make works the buttons in the table right to add more righ-cols
 
     function rightButtons(){
-        var rightHalf      = Math.ceil(cols / 2);
-        var rightTable     = getTable.offsetWidth + mainTableBox.offsetLeft;
-        var rightCopyTable = copyTable[0].offsetWidth + copyTableBox.offsetLeft;
-
-        if (rightTable == rightCopyTable) {
+        var rightHalf = Math.ceil(cols / 2);
             
             for (var rb = 0; rb < copyRow.length; rb++) {
                 var specificCols = copyRow[rb].getElementsByTagName('td');
 
                 for (var rbi = rightHalf; rbi >= rightHalf && rbi < cols; rbi++) {
-                    specificCols[rbi].getElementsByTagName('button')[0].addEventListener("click", addRightCol);
-                    specificCols[rbi].getElementsByTagName('button')[0].addEventListener("click", function(){
-                        document.getElementById("myTable").style.marginRight = getTable.offsetLeft - (getCellWidth() + 2) + 'px'
-                    });
+                    specificCols[rbi].getElementsByTagName('button')[0].addEventListener("click", rightScroll)
                 };
             };
-        } else if (rightTable > rightCopyTable){
-            document.getElementById("myTable").style.marginRight = getTable.offsetLeft - (getCellWidth() + 2) + 'px'
-        };
-
     }
 
     rightButtons();
@@ -222,7 +211,6 @@ function createTable() {
         var bottomTable     = getTable.offsetHeight + mainTableBox.offsetTop;
         var bottomCopyTable = copyTable[0].offsetHeight + copyTableBox.offsetTop;
 
-
         if ((bottomTable + getTable.offsetTop) == bottomCopyTable){
             addBottomRow();
             getTable.style.marginTop = getTable.offsetTop - (getCellHeight() + 2) + 'px';
@@ -234,7 +222,15 @@ function createTable() {
     }
 
     function rightScroll(){
+        var rightTable     = getTable.offsetWidth + mainTableBox.offsetLeft;
+        var rightCopyTable = copyTable[0].offsetWidth + copyTableBox.offsetLeft;
 
+        if (rightTable == rightCopyTable) {
+            addRightCol();
+            document.getElementById("myTable").style.marginLeft = getTable.offsetLeft - (getCellWidth() + 2) + 'px';
+        } else if (rightTable > rightCopyTable){
+            document.getElementById("myTable").style.marginLeft = getTable.offsetLeft - (getCellWidth() + 2) + 'px'
+        };
     }
 
 }
