@@ -225,10 +225,15 @@ function createTable() {
         var rightTable     = getTable.offsetWidth + mainTableBox.offsetLeft;
         var rightCopyTable = copyTable[0].offsetWidth + copyTableBox.offsetLeft;
 
-        if (rightTable == rightCopyTable) {
+        console.log(rightTable);
+        console.log(rightCopyTable);
+        console.log(getTable.offsetLeft);
+        console.log(copyTable[0].offsetLeft);
+
+        if ((rightTable + getTable.offsetLeft) == rightCopyTable) {
             addRightCol();
             document.getElementById("myTable").style.marginLeft = getTable.offsetLeft - (getCellWidth() + 2) + 'px';
-        } else if (rightTable > rightCopyTable){
+        } else if ((rightTable + getTable.offsetLeft) > rightCopyTable){
             document.getElementById("myTable").style.marginLeft = getTable.offsetLeft - (getCellWidth() + 2) + 'px'
         };
     }
