@@ -199,11 +199,22 @@ function createTable() {
     function leftScroll(){
         var leftTable = getTable.offsetLeft + copyTableBox.offsetLeft
 
+        console.log(leftTable);
+        console.log(copyTableBox.offsetLeft);
+
         if (leftTable == copyTableBox.offsetLeft){
+            console.log("first");
             addLeftCol();
         } else if (leftTable < copyTableBox.offsetLeft){
-            getTable.style.marginLeft = getTable.offsetLeft + getCellWidth() + 'px';
+            console.log("second");
+            getTable.style.marginLeft = getTable.offsetLeft + (getCellWidth() + 2) + 'px';
+        } else {
+            console.log("reset marginLeft");
+            getTable.style.marginLeft = 0 + "px";
         };
+
+        console.log(leftTable);
+        console.log(copyTableBox.offsetLeft);
 
     }
 
@@ -224,11 +235,6 @@ function createTable() {
     function rightScroll(){
         var rightTable     = getTable.offsetWidth + mainTableBox.offsetLeft;
         var rightCopyTable = copyTable[0].offsetWidth + copyTableBox.offsetLeft;
-
-        console.log(rightTable);
-        console.log(rightCopyTable);
-        console.log(getTable.offsetLeft);
-        console.log(copyTable[0].offsetLeft);
 
         if ((rightTable + getTable.offsetLeft) == rightCopyTable) {
             addRightCol();
