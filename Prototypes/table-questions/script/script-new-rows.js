@@ -45,14 +45,33 @@ function addLeftCol() {
 	var rowsTable = document.getElementById('myTable').getElementsByTagName('tr');
 
 	for (var i = 0; i < rowsTable.length; i++) {
-		var newCol, leftLatsCoor, lastCoor, newXasis, newtYasis;
+		var newLeftCol, leftLatsCoor, lastCoor, newXasis, newtYasis;
 
-		var newCol        = rowsTable[i].insertCell(0);
+		var newLeftCol        = rowsTable[i].insertCell(0);
 		var leftLatsCoor  = rowsTable[i].getElementsByTagName('td')[1];
 		var lastCoor      = leftLatsCoor.innerHTML.split(",");
 		var newXasis      = parseInt(lastCoor[0]) - 1;
 		var newtYasis     = parseInt(lastCoor[1]);
 
-		newCol.innerHTML = newXasis + ',' + newtYasis;
+		newLeftCol.innerHTML = newXasis + ',' + newtYasis;
+	};
+}
+
+function addRightCol() {
+	var rowsTable, colslenght;
+
+	var rowsTable = document.getElementById('myTable').getElementsByTagName('tr');
+	var colslenght    = rowsTable[0].getElementsByTagName('td').length - 1;
+
+	for (var i = 0; i < rowsTable.length; i++) {
+		var newRightCol, rightLatsCoor, lastCoor, newXasis, newtYasis;
+
+		var newRightCol   = rowsTable[i].insertCell(-1);
+		var rightLatsCoor = rowsTable[i].getElementsByTagName('td');
+		var lastCoor      = rightLatsCoor[colslenght].innerHTML.split(",");
+		var newXasis      = parseInt(lastCoor[0]) + 1;
+		var newtYasis     = parseInt(lastCoor[1]);
+
+		newRightCol.innerHTML = newXasis + ',' + newtYasis;
 	};
 }
