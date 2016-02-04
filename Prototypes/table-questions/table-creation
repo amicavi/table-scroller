@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title>Table Creation Prototype</title>
+    <link href="http://d2v52k3cl9vedd.cloudfront.net/basscss/7.0.4/basscss.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="col-3 mx-auto">
+        <h1>Table Creation Prototype</h1>
+    </header>
+    <main class="col-3 mx-auto">
+        <table class="border bg-silver col-2">
+            <tbody>
+                <tr>
+                    <td class="p3 border">-1,1</td>
+                    <td class="p3 border">0,1</td>
+                    <td class="p3 border">1,1</td>
+                </tr>
+                <tr>
+                    <td class="p3 border">-1,0</td>
+                    <td class="p3 border">0,0</td>
+                    <td class="p3 border">1,0</td>
+                </tr>
+                <tr>
+                    <td class="p3 border">-1,-1</td>
+                    <td class="p3 border">0,-1</td>
+                    <td class="p3 border">1,-1</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
