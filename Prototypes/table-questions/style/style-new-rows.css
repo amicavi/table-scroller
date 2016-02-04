@@ -1,0 +1,11 @@
+h1 {
+	color: #00CCFF;
+}	
+
+td {
+	width: 100px;
+	height: 100px;
+	background-color: #00CCFF;
+	border: solid 2px #000;
+	text-align: center;
+}
