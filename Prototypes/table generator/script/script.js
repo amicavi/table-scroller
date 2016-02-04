@@ -30,8 +30,8 @@ function createTable() {
     table += "</table>";
     table += "</tbody>";
 
-    document.getElementById("tableHolder").innerHTML= table;
-    document.getElementById("tableCopy").innerHTML= table; 
+    document.getElementById("tableHolder").innerHTML = table;
+    document.getElementById("tableCopy").innerHTML   = table; 
 
     // Get main table
     var getTable  = document.getElementById("myTable");
@@ -59,7 +59,7 @@ function createTable() {
         return cellHeight;
     }
 
-    // In this part we call have a function to change the values of the second table for buttons
+    // In this part we call a function to change the values of the second table for buttons
     // with this we can control the main table giving actions to the button.
 
     function addButtons(){
@@ -117,7 +117,7 @@ function createTable() {
     addButtons();
     adjustMeasures()
 
-    // The following function make works the buttons in the table top to add more top-rows
+    // The following function makes the buttons work in the table's top to add more top-rows
 
     function topButtons(){
         var topHalf = Math.floor(rows / 2);
@@ -152,15 +152,21 @@ function createTable() {
     // The following function make works the buttons in the table bottom to add more bottom-rows
 
     function bottomButtons(){
-        var bottomHalf = Math.ceil(rows / 2);
+        var bottomHalf, bb;
+        
+        bottomHalf = Math.ceil(rows / 2);
+        bb         = bottomHalf;
        
-            for (var bb = bottomHalf; bb >= bottomHalf && bb < rows; bb++) {
-                var specificRows = copyRow[bb].getElementsByTagName('td');
+        for (bb; bb >= bottomHalf && bb < rows; bb++) {
+            var specificRows, bbi;
 
-                for (var bbi =0; bbi < specificRows.length; bbi++) {
-                    specificRows[bbi].getElementsByTagName('button')[0].addEventListener("click", bottomScroll);
-                };
-            };  
+            specificRows = copyRow[bb].getElementsByTagName('td');
+            bbi          = 0;
+
+            for (bbi; bbi < specificRows.length; bbi++) {
+                specificRows[bbi].getElementsByTagName('button')[0].addEventListener("click", bottomScroll);
+            }
+        }
     }
 
     bottomButtons();
@@ -175,8 +181,8 @@ function createTable() {
 
                 for (var rbi = rightHalf; rbi >= rightHalf && rbi < cols; rbi++) {
                     specificCols[rbi].getElementsByTagName('button')[0].addEventListener("click", rightScroll)
-                };
-            };
+                }
+            }
     }
 
     rightButtons();
@@ -193,29 +199,20 @@ function createTable() {
         } else {
             console.log("reset marginTop");
             getTable.style.marginTop = 0 + "px";
-        };
+        }
     }
 
     function leftScroll(){
-        var leftTable = getTable.offsetLeft + copyTableBox.offsetLeft
-
-        console.log(leftTable);
-        console.log(copyTableBox.offsetLeft);
+        var leftTable = getTable.offsetLeft + copyTableBox.offsetLeft;
 
         if (leftTable == copyTableBox.offsetLeft){
-            console.log("first");
             addLeftCol();
         } else if (leftTable < copyTableBox.offsetLeft){
-            console.log("second");
             getTable.style.marginLeft = getTable.offsetLeft + (getCellWidth() + 2) + 'px';
         } else {
             console.log("reset marginLeft");
             getTable.style.marginLeft = 0 + "px";
-        };
-
-        console.log(leftTable);
-        console.log(copyTableBox.offsetLeft);
-
+        }
     }
 
     function bottomScroll(){
@@ -229,19 +226,26 @@ function createTable() {
             getTable.style.marginTop = getTable.offsetTop - (getCellHeight() + 2) + 'px';
         } else {
             getTable.style.marginTop = 0 + "px";
-        };
+        }
     }
 
     function rightScroll(){
         var rightTable     = getTable.offsetWidth + mainTableBox.offsetLeft;
         var rightCopyTable = copyTable[0].offsetWidth + copyTableBox.offsetLeft;
 
-        if ((rightTable + getTable.offsetLeft) == rightCopyTable) {
+        console.log(rightTable);
+        console.log(rightCopyTable);
+        console.log(getTable.offsetWidth);
+        console.log(mainTableBox.offsetLeft);
+
+        if (rightTable == rightCopyTable) {
             addRightCol();
             document.getElementById("myTable").style.marginLeft = getTable.offsetLeft - (getCellWidth() + 2) + 'px';
         } else if ((rightTable + getTable.offsetLeft) > rightCopyTable){
             document.getElementById("myTable").style.marginLeft = getTable.offsetLeft - (getCellWidth() + 2) + 'px'
-        };
+        } else {
+            getTable.style.marginTop = 0 + "px";
+        }
     }
 
 }
