@@ -1,4 +1,3 @@
-
 function addTopRow() {
     var theTable, newTopRow, firstCells;
 
@@ -74,4 +73,24 @@ function addRightCol() {
 
         newRightCol.innerHTML = newXasis + ',' + newtYasis;
     };
+}
+
+function topRight() {
+    addTopRow();
+    addRightCol();
+}
+
+function topLeft() {
+    addTopRow();
+    addLeftCol();
+}
+
+function bottomRight() {
+    addBottomRow();
+    addRightCol();
+}
+
+function bottomLeft() {
+    addBottomRow();
+    addLeftCol();
 }

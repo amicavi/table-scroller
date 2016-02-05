@@ -1,0 +1,56 @@
+<html>
+<head>
+    <title>Table Creation Prototype</title>
+    <link rel="stylesheet" type="text/css" href="style/adding-buttons.css">
+    <script type="text/javascript" src="script/adding-buttons.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Table Creation Prototype</h1>
+    </header>
+    <main>
+        <div>
+            <table id="myTable">
+                <tbody>
+                    <tr>
+                        <td>-1,1</td>
+                        <td>0,1</td>
+                        <td>1,1</td>
+                    </tr>
+                    <tr>
+                        <td>-1,0</td>
+                        <td>0,0</td>
+                        <td>1,0</td>
+                    </tr>
+                    <tr>
+                        <td>-1,-1</td>
+                        <td>0,-1</td>
+                        <td>1,-1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+             <table id="overlayTable">
+                <tbody>
+                    <tr>
+                        <td><button onclick="topLeft()"></button></td>
+                        <td><button onclick="addTopRow()"></button></td>
+                        <td><button onclick="topRight()"></button></td>
+                    </tr>
+                    <tr>
+                        <td><button onclick="addLeftCol()"></button></td>
+                        <td></td>
+                        <td><button onclick="addRightCol()"></button></td>
+                    </tr>
+                    <tr>
+                        <td><button onclick="bottomLeft()"></button></td>
+                        <td><button onclick="addBottomRow()"></button></td>
+                        <td><button onclick="bottomRight()"></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>

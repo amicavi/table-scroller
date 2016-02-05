@@ -1,0 +1,33 @@
+#myTable, #overlayTable{
+	position: absolute;
+}
+
+table {
+	max-width: 0;
+    width: 100%;
+    table-layout: fixed;
+}
+
+#myTable td {
+	width: 100px;
+	height: 100px;
+	background-color: #00CCFF;
+	border: solid 2px #000;
+	text-align: center;
+	border: none;
+}
+
+#overlayTable td {
+	width: 100px;
+	height: 100px;
+	background-color: transparent;
+	border: solid 2px #000;
+	text-align: center;
+	border: none;
+}
+
+button {
+	width: 95px;
+	height: 95px;
+	border: none;
+}
