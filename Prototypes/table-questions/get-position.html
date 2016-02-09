@@ -1,0 +1,39 @@
+<html>
+<head>
+	<title>Get position</title>
+	<link rel="stylesheet" type="text/css" href="style/get-position.css">
+	<script type="text/javascript" src="script/get-position.js"></script>
+</head>
+<body>
+	<div id="buttonsContainer">
+		<button onclick="goUp()"><img src="img/up.png"></button>
+		<button onclick="goDown()"><img src="img/down.png"></button>
+		<button onclick="goLeft()"><img src="img/left.png"></button>
+		<button onclick="goRight()"><img src="img/right.png"></button>
+		<button onclick="goRightUp()"><img src="img/right_up.png"></button>
+		<button onclick="goRightDown()"><img src="img/right_down.png"></button>
+		<button onclick="goLeftUp()"><img src="img/left_up.png"></button>
+		<button onclick="goLeftDown()"><img src="img/left_down.png"></button>
+	</div>
+	<main>
+		<table>
+			<thead>
+				<tr>
+					<td>Current Position</td>
+					<td>X</td>
+					<td>Y</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td id="position">0,0</td>
+					<td id="xAxis">0</td>
+					<td id="yAxis">0</td>
+				</tr>
+				<tr>
+			</tbody>
+		</table>
+	</main>	
+
+</body>
+</html>

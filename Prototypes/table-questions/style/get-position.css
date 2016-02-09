@@ -1,0 +1,12 @@
+
+td {
+	width: 150px;
+	text-align: center;
+}
+
+thead td{
+	background-color: #000000;
+	color: #fff;
+	font-style: bold;
+
+}
