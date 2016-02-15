@@ -47,11 +47,11 @@ function addLeftCol() {
     for (var i = 0; i < rowsTable.length; i++) {
         var newLeftCol, leftLatsCoor, lastCoor, newXasis, newtYasis;
 
-        var newLeftCol        = rowsTable[i].insertCell(0);
-        var leftLatsCoor  = rowsTable[i].getElementsByTagName('td')[1];
-        var lastCoor      = leftLatsCoor.innerHTML.split(",");
-        var newXasis      = parseInt(lastCoor[0]) - 1;
-        var newtYasis     = parseInt(lastCoor[1]);
+        var newLeftCol   = rowsTable[i].insertCell(0);
+        var leftLatsCoor = rowsTable[i].getElementsByTagName('td')[1];
+        var lastCoor     = leftLatsCoor.innerHTML.split(",");
+        var newXasis     = parseInt(lastCoor[0]) - 1;
+        var newtYasis    = parseInt(lastCoor[1]);
 
         newLeftCol.innerHTML = newXasis + ',' + newtYasis;
     };
