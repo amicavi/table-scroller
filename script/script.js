@@ -6,12 +6,16 @@ function topLeftButton() {
 
     deleteBottomRow();
     deleteRightCol();
+
+    positionUpLeft();
 }
 
 function topButton() {
     addTopRow();
 
     deleteBottomRow();
+
+    positionUp();
 }
 
 function topRightButton() {
@@ -20,18 +24,24 @@ function topRightButton() {
 
     deleteBottomRow();
     deleteLeftCol();
+
+    positionUpRight();
 }
 
 function leftButton() {
     addLeftCol();
 
     deleteRightCol();
+
+    positionLeft();
 }
 
 function rightButton() {
     addRightCol();
 
     deleteLeftCol();
+
+    positionRight();
 }
 
 function bottomLeftButton() {
@@ -40,12 +50,16 @@ function bottomLeftButton() {
 
     deleteTopRow();
     deleteRightCol();
+
+    positionDownLeft();
 }
 
 function bottomButton() {
     addBottomRow();
 
     deleteTopRow();
+
+    positionDown();
 }
 
 function bottomRightButton() {
@@ -54,6 +68,8 @@ function bottomRightButton() {
 
     deleteTopRow();
     deleteLeftCol();
+
+    positionDownRight();
 }
 
 // Functions that add the new rows and cols to the main table
@@ -134,4 +150,81 @@ function deleteLeftCol() {
     for (var i = 0; i < rowsTable.length; i++) {
         rowsTable[i].deleteCell(-1);
     };
+}
+
+// The following code is to know the current position of the center cell
+
+var currentPosition = "0,0";
+console.log(currentPosition);
+
+function positionUpLeft() {
+    var independentVelues  = currentPosition.split(",");
+    var positionX          = parseInt(independentVelues[0]) - 1;
+    var positionY          = parseInt(independentVelues[1]) + 1;
+
+    currentPosition = positionX + "," + positionY;
+    console.log(currentPosition);
+}
+
+function positionUp() {
+    var independentVelues  = currentPosition.split(",");
+    var positionX          = parseInt(independentVelues[0]);
+    var positionY          = parseInt(independentVelues[1]) + 1;
+
+    currentPosition = positionX + "," + positionY;
+    console.log(currentPosition);
+}
+
+function positionUpRight() {
+    var independentVelues  = currentPosition.split(",");
+    var positionX          = parseInt(independentVelues[0]) + 1;
+    var positionY          = parseInt(independentVelues[1]) + 1;
+
+    currentPosition = positionX + "," + positionY;
+    console.log(currentPosition);
+}
+
+function positionLeft() {
+    var independentVelues  = currentPosition.split(",");
+    var positionX          = parseInt(independentVelues[0]) - 1;
+    var positionY          = parseInt(independentVelues[1]);
+
+    currentPosition = positionX + "," + positionY;
+    console.log(currentPosition);
+}
+
+function positionRight() {
+    var independentVelues  = currentPosition.split(",");
+    var positionX          = parseInt(independentVelues[0]) + 1;
+    var positionY          = parseInt(independentVelues[1]);
+
+    currentPosition = positionX + "," + positionY;
+    console.log(currentPosition);
+}
+
+function positionDownLeft() {
+    var independentVelues  = currentPosition.split(",");
+    var positionX          = parseInt(independentVelues[0]) - 1;
+    var positionY          = parseInt(independentVelues[1]) - 1;
+    
+    currentPosition = positionX + "," + positionY;
+    console.log(currentPosition);
+}
+
+function positionDown() {
+    var independentVelues  = currentPosition.split(",");
+    var positionX          = parseInt(independentVelues[0]);
+    var positionY          = parseInt(independentVelues[1]) - 1;
+    
+    currentPosition = positionX + "," + positionY;
+    console.log(currentPosition);
+}
+
+function positionDownRight() {
+    var independentVelues  = currentPosition.split(",");
+    var positionX          = parseInt(independentVelues[0]) + 1;
+    var positionY          = parseInt(independentVelues[1]) - 1;
+    
+    currentPosition = positionX + "," + positionY;
+    console.log(currentPosition);
 }
