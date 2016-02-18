@@ -1,50 +1,51 @@
 <html>
 <head>
-	<title>Table Scroller</title>
-	<link rel="stylesheet" type="text/css" href="style/style.css">
+    <title>Table Scroller</title>
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <script type="text/javascript" src='script/script.js'></script>
 </head>
 <body>
-	<main>
-		<div id='container'>
-			<table id='main_table'>
-				<tbody>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-				</tbody>
-			</table>
-			<table id="overlay_table">
-				<tbody>
-					<tr>
-						<td><button></button></td>
-						<td><button></button></td>
-						<td><button></button></td>
-					</tr>
-					<tr>
-						<td><button></button></td>
-						<td></td>
-						<td><button></button></td>
-					</tr>
-					<tr>
-						<td><button></button></td>
-						<td><button></button></td>
-						<td><button></button></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</main>
+    <main>
+        <div id='container'>
+            <table id='main_table'>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table id="overlay_table">
+                <tbody>
+                    <tr>
+                        <td><button onclick='topLeftButton()'></button></td>
+                        <td><button onclick='topButton()'></button></td>
+                        <td><button onclick='topRightButton()'></button></td>
+                    </tr>
+                    <tr>
+                        <td><button onclick='leftButton()'></button></td>
+                        <td></td>
+                        <td><button onclick='rightButton()'></button></td>
+                    </tr>
+                    <tr>
+                        <td><button onclick='bottomLeftButton()'></button></td>
+                        <td><button onclick='bottomButton()'></button></td>
+                        <td><button onclick='bottomRightButton()'></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
 </body>
 </html>
